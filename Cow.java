@@ -1,27 +1,18 @@
 public class Cow implements Animal {
-    private String sound = "Moo";
-    private int id;
+    private String sound;
 
-    @Override
-    public Animal clone() {
-        Cow copy = new Cow();
-        copy.setId(this.id);
-        return copy;
+    public Cow(String sound) {
+        this.sound = sound;
     }
 
     @Override
-    public void makeSound() {
-        System.out.println(getType() + " " + id + " says: " + sound);
+    public Animal clone() {
+        return new Cow(this.sound);
     }
 
     @Override
     public String getType() {
-        return "Cow";
-    }
-
-    @Override
-    public String getSound() {
-        return sound;
+        return "Cow makes sound " + sound;
     }
 
     @Override
@@ -29,13 +20,7 @@ public class Cow implements Animal {
         return "A large domesticated animal raised for milk and beef.";
     }
 
-    @Override
-    public int getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(int id) {
-        this.id = id;
+    public void setSound(String sound) {
+        this.sound = sound;
     }
 }

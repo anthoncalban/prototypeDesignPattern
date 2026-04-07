@@ -3,35 +3,54 @@ public class TestAnimal {
         AnimalRegistry registry = new AnimalRegistry();
 
         // Register prototypes
-        registry.addPrototype("Sheep", new Sheep());
-        registry.addPrototype("Cow", new Cow());
-        registry.addPrototype("Horse", new Horse());
-        registry.addPrototype("Goat", new Goat());
+        registry.addPrototype("Sheep", new Sheep("Dolly"));
+        registry.addPrototype("Cow", new Cow("Moo"));
+        registry.addPrototype("Horse", new Horse("Brown"));
+        registry.addPrototype("Goat", new Goat("Maaah"));
 
-        // Create animals
-        Animal sheep1 = registry.createAnimal("Sheep");
-        System.out.println("Created: " + sheep1.getType() + " " + sheep1.getId());
-        System.out.println("Description: " + sheep1.getDescription());
-        sheep1.makeSound();
+        // Print originals
+        Animal sheep = registry.createAnimal("Sheep");
+        System.out.println(sheep.getType());
+        System.out.println("Description: " + sheep.getDescription());
 
-        Animal cow1 = registry.createAnimal("Cow");
-        System.out.println("\nCreated: " + cow1.getType() + " " + cow1.getId());
-        System.out.println("Description: " + cow1.getDescription());
-        cow1.makeSound();
+        Animal cow = registry.createAnimal("Cow");
+        System.out.println(cow.getType());
+        System.out.println("Description: " + cow.getDescription());
 
-        Animal cow2 = registry.createAnimal("Cow");
-        System.out.println("\nCreated: " + cow2.getType() + " " + cow2.getId());
-        System.out.println("Description: " + cow2.getDescription());
-        cow2.makeSound();
+        Animal horse = registry.createAnimal("Horse");
+        System.out.println(horse.getType());
+        System.out.println("Description: " + horse.getDescription());
 
-        Animal horse1 = registry.createAnimal("Horse");
-        System.out.println("\nCreated: " + horse1.getType() + " " + horse1.getId());
-        System.out.println("Description: " + horse1.getDescription());
-        horse1.makeSound();
+        Animal goat = registry.createAnimal("Goat");
+        System.out.println(goat.getType());
+        System.out.println("Description: " + goat.getDescription());
 
-        Animal goat1 = registry.createAnimal("Goat");
-        System.out.println("\nCreated: " + goat1.getType() + " " + goat1.getId());
-        System.out.println("Description: " + goat1.getDescription());
-        goat1.makeSound();
+        System.out.println("\nCloning animals...\n");
+
+        // Clone and modify
+        Sheep clonedSheep = (Sheep) sheep.clone();
+        clonedSheep.setName("Shaun");
+
+        Cow clonedCow = (Cow) cow.clone();
+        clonedCow.setSound("Moo Moo");
+
+        Horse clonedHorse = (Horse) horse.clone();
+        clonedHorse.setColor("Black");
+
+        Goat clonedGoat = (Goat) goat.clone();
+        clonedGoat.setSound("Maaah Maaah");
+
+        // Print clones
+        System.out.println(clonedSheep.getType());
+        System.out.println("Description: " + clonedSheep.getDescription());
+
+        System.out.println(clonedCow.getType());
+        System.out.println("Description: " + clonedCow.getDescription());
+
+        System.out.println(clonedHorse.getType());
+        System.out.println("Description: " + clonedHorse.getDescription());
+
+        System.out.println(clonedGoat.getType());
+        System.out.println("Description: " + clonedGoat.getDescription());
     }
 }
